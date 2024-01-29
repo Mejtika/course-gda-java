@@ -23,20 +23,13 @@ jobs:
           java-version: "11"
 
       - name: Run Super Linter
-        uses: github/super-linter@v5.7.2
+        uses: super-linter/super-linter@v5.7.2
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          commit-lint: "false"
-          css-lint: "false"
-          docker-lint: "false"
-          go-lint: "false"
-          html-lint: "false"
-          java-lint: "true"
-          javascript-lint: "false"
-          json-lint: "false"
-          markdown-lint: "false"
-          php-lint: "false"
-          python-lint: "false"
-          ruby-lint: "false"
-          shell-lint: "false"
-          yaml-lint: "false"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          commit_sha: ${{ github.sha }}
+          commit_msg: "Lint code"
+          annotations: true
+          strict: true
+          colors: true
+          debug: false
+
