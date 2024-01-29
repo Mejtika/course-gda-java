@@ -16,12 +16,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
-      - name: Set up JDK
-        uses: actions/setup-java@v2
-        with:
-          java-version: "11"
-
       - name: Run Super Linter
         uses: super-linter/super-linter@v5.7.2
         with:
