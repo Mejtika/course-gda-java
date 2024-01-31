@@ -132,12 +132,16 @@ jobs:
         id: buildx
         uses: docker/setup-buildx-action@v2.9.0
         
+      - name: Convert repository name to lowercase
+        id: repo-name-lowercase
+        run: echo "REPO_NAME=$(echo ${{ github.repository }} | awk '{print tolower($0)}')" >> $GITHUB_ENV
+
       - name: Docker Test
         id: docker-test
         env:
           DOCKER_BUILDKIT: 1
           REGISTRY: ${{ env.REGISTRY}}
-          REPOSITORY:  ${{ github.repository | lower }}
+          REPOSITORY:  ${{ env.REPO_NAME }}
           IMAGE_TAG: ${{ github.sha }}-test
         run: >
           docker buildx build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG
