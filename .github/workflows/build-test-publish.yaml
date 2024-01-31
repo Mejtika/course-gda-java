@@ -137,7 +137,7 @@ jobs:
         env:
           DOCKER_BUILDKIT: 1
           REGISTRY: ${{ env.REGISTRY}}
-          REPOSITORY: ${{ github.repository }}
+          REPOSITORY:  ${{ github.repository | lower }}
           IMAGE_TAG: ${{ github.sha }}-test
         run: >
           docker buildx build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG
