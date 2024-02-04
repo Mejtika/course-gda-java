@@ -17,7 +17,7 @@ permissions:
 jobs:
   iac:
     name: Validate IaC
-    uses: asmaestro/actions/.github/workflows/iac-scan-trivy.yaml@solution-security
+    uses: Mejtika/course-actions/.github/workflows/iac-scan-trivy.yaml@master
     with:
       exit-code: 1 # fail the job if issues are found
       severity: HIGH,CRITICAL

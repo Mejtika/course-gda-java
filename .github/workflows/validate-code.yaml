@@ -12,7 +12,7 @@ on:
 jobs:
   sast:
     name: Validate code
-    uses: asmaestro/actions/.github/workflows/sast-validation-semgrep.yaml@solution-security
+    uses: Mejtika/course-actions/.github/workflows/sast-validation-semgrep.yaml@master
     with:
       rules: "p/java"
       upload-artifact: true

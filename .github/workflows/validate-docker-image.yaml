@@ -129,7 +129,7 @@ jobs:
     permissions:
       packages: read
       contents: write
-    uses: asmaestro/actions/.github/workflows/image-scan-trivy.yaml@solution-security
+    uses: Mejtika/course-actions/.github/workflows/image-scan-trivy.yaml@master
     secrets:
       registry-username: ${{ github.actor }}
       registry-password: ${{ secrets.GITHUB_TOKEN }}

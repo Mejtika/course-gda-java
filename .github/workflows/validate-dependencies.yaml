@@ -20,7 +20,7 @@ permissions:
 jobs:
   sca:
     name: Validate Maven dependencies
-    uses: asmaestro/actions/.github/workflows/sca-validation-trivy.yaml@solution-security
+    uses: Mejtika/course-actions/.github/workflows/sca-validation-trivy.yaml@master
     with:
       exit-code: 1 # fail the job if issues are found
       severity: HIGH,CRITICAL
