@@ -66,7 +66,7 @@ jobs:
 
   sast:
     name: Validate code
-    uses: asmaestro/actions/.github/workflows/sast-validation-semgrep.yaml@solution-security
+    uses: Mejtika/course-actions/.github/workflows/sast-validation-semgrep.yaml@master
     permissions:
       contents: write
     needs: [check]
@@ -79,7 +79,7 @@ jobs:
 
   sca:
     name: Validate dependencies
-    uses: asmaestro/actions/.github/workflows/sca-validation-trivy.yaml@solution-security
+    uses: Mejtika/course-actions/.github/workflows/sca-validation-trivy.yaml@master
     permissions:
       contents: write
     needs: [check]
@@ -269,7 +269,7 @@ jobs:
     permissions:
       packages: read
       contents: write
-    uses: asmaestro/actions/.github/workflows/image-scan-trivy.yaml@solution-security
+    uses: Mejtika/course-actions/.github/workflows/image-scan-trivy.yaml@master
     secrets:
       registry-username: ${{ github.actor }}
       registry-password: ${{ secrets.GITHUB_TOKEN }}
@@ -282,14 +282,14 @@ jobs:
       release-tag: ${{ inputs.release_tag }}
       upload-release-assets: true
       upload-results-github-security: false
-  
+
   scan-sbom:
     name: Generate & Scan SBOM
     needs: [container]
     permissions:
       packages: read
       contents: write
-    uses: asmaestro/actions/.github/workflows/sbom-scan-grype.yaml@solution-security
+    uses: Mejtika/course-actions/.github/workflows/sbom-scan-grype.yaml@master
     secrets:
       registry-username: ${{ github.actor }}
       registry-password: ${{ secrets.GITHUB_TOKEN }}
@@ -297,7 +297,7 @@ jobs:
       image: 'ghcr.io/${{ github.repository }}:${{ inputs.release_tag }}'
       release-tag: ${{ inputs.release_tag }}
       scan-sbom: true
-      severity: 'high' # minimum vulnerability severity to trigger a failure 
+      severity: 'high' # minimum vulnerability severity to trigger a failure
       upload-release-assets: true
       upload-artifact: true
 
@@ -306,7 +306,7 @@ jobs:
     needs: [container]
     permissions:
       contents: write
-    uses: asmaestro/actions/.github/workflows/iac-scan-trivy.yaml@solution-security
+    uses: Mejtika/course-actions/.github/workflows/iac-scan-trivy.yaml@master
     with:
       exit-code: 1 # fail the job if issues are found
       severity: HIGH,CRITICAL
